@@ -31,4 +31,4 @@ jobs:
       run: |
         source /opt/intel/oneapi/setvars.sh
         ifort -mkl commonvars.f90 main.f90 -o main.x
-        '(test -f main.x && echo executable exists) || (echo executable does not exist && exit 1)'
+        (test -f main.x && echo executable exists) || (echo executable does not exist && exit 1)
