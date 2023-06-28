@@ -4,7 +4,7 @@ program main
 
     integer :: m,n,k
 
-    m=40; n=120, k=120
+    m=40; n=120; k=120
 
     allocate(matrixA(m,n), matrixB(n,k), matrixC(m,k))
 
