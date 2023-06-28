@@ -1,8 +1,5 @@
 name: Build with Intel OneAPI components
 description: Build FORTRAN codes using Intel OneAPI components on github actions
-branding:
-  icon: 'code'
-  color: 'orange'
 
 on:
   push:
