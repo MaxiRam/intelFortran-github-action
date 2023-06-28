@@ -1,5 +1,4 @@
 name: Build with Intel OneAPI components
-description: Build FORTRAN codes using Intel OneAPI components on github actions
 
 on:
   push:
