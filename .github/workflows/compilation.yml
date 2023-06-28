@@ -15,24 +15,24 @@ jobs:
     defaults:
       run:
         shell: bash --noprofile --norc {0}
-      steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-      - name: Add Intel OneAPI repository
-        run: |
-          wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
-          sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
-          rm GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
-          sudo add-apt-repository "deb https://apt.repos.intel.com/oneapi all main"
-          sudo apt-get update
-      - name: Install FORTRAN compiler and MKL library
-        run: |
-          sudo apt-get install -y intel-oneapi-common-vars
-          sudo apt-get install -y intel-oneapi-compiler-fortran-2021.3.0
-          sudo apt-get install -y intel-oneapi-mkl-2021.3.0
-          sudo apt-get install -y intel-oneapi-mkl-devel-2021.3.0
-      - name: Build the code 
-        run: |
-          source /opt/intel/oneapi/setvars.sh
-          ifort -mkl commonvars.f90 main.f90 -o main.x
-          '(test -f main.x && echo executable exists) || (echo executable does not exist && exit 1)'
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+    - name: Add Intel OneAPI repository
+      run: |
+        wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
+        sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
+        rm GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
+        sudo add-apt-repository "deb https://apt.repos.intel.com/oneapi all main"
+        sudo apt-get update
+    - name: Install FORTRAN compiler and MKL library
+      run: |
+        sudo apt-get install -y intel-oneapi-common-vars
+        sudo apt-get install -y intel-oneapi-compiler-fortran-2021.3.0
+        sudo apt-get install -y intel-oneapi-mkl-2021.3.0
+        sudo apt-get install -y intel-oneapi-mkl-devel-2021.3.0
+    - name: Build the code 
+      run: |
+        source /opt/intel/oneapi/setvars.sh
+        ifort -mkl commonvars.f90 main.f90 -o main.x
+        '(test -f main.x && echo executable exists) || (echo executable does not exist && exit 1)'
