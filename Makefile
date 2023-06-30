@@ -7,7 +7,7 @@ FC = ifort
 FFLAGS = -O2
 
 # Link with MKL libraries
-LIBS  = -qmkl
+LIBS  = -mkl
 
 # Define directories
 
